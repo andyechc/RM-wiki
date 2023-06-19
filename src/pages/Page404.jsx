@@ -1,3 +1,5 @@
+import page404Png from "../assets/404.png";
+
 export function Page404() {
   return (
     <section className="bg-white dark:bg-gray-900 h-screen transition-colors">
@@ -10,7 +12,7 @@ export function Page404() {
         </p>
         <img
           className="w-full max-w-md drop-shadow-[0_0_20px_rgb(0,250,200,.25)]"
-          src="/404.png"
+          src={page404Png}
         />
       </div>
     </section>
