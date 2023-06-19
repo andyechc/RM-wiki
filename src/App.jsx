@@ -3,12 +3,12 @@ import { Footer } from "./components/Footer";
 import { Home } from "./pages/Home";
 import { Character } from "./pages/Character";
 import { Page404 } from "./pages/Page404";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <Routes>
           <Route
@@ -27,7 +27,7 @@ function App() {
             lazy={() => import("./pages/Page404")}
           />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
 
       <Footer />
     </>
