@@ -27,6 +27,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: skywarth/vite-github-pages-deployer@v1.1.0
         with:
+          permissions: 'id-token: write'
           public_base_path: /${{ github.event.repository.name }}
           build_path: ./dist
           artifact_name: github-pages
