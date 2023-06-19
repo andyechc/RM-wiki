@@ -7,7 +7,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
+    <div className="dark:bg-gray-800">
       <HashRouter>
         <Header />
         <Routes>
@@ -30,7 +30,7 @@ function App() {
       </HashRouter>
 
       <Footer />
-    </>
+    </div>
   );
 }
 export default App;
