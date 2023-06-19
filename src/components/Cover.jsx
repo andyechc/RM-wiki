@@ -3,7 +3,7 @@ import coverPng from "../assets/cover.png";
 
 export function Cover() {
   return (
-    <section className="bg-white block md:h-full h-screen pb-10 md:p-28 pt-0 flex flex-wrap justify-evenly items-center dark:bg-gray-900 transition-colors">
+    <section className="bg-white block h-full py-20 md:p-28 pt-0 flex flex-wrap justify-evenly items-center dark:bg-gray-900 transition-colors">
       <div className="p-10 flex flex-col gap-3  justify-between text-center sm:text-justify">
         <img className="w-28 h-28 m-auto sm:m-0 animate-show" src={logoSvg} />
         <h2 className="font-bold text-4xl text-cyan-600 sm:text-5xl animate-show">

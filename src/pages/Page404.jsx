@@ -2,8 +2,8 @@ import page404Png from "../assets/404.png";
 
 export function Page404() {
   return (
-    <section className="bg-white dark:bg-gray-900 h-screen transition-colors">
-      <div className="w-full h-full flex flex-col justify-center items-center gap-3 p-10">
+    <section className="bg-white dark:bg-gray-900 h-full transition-colors py-20 px-10">
+      <div className="w-full h-full flex flex-col justify-center items-center gap-3">
         <h2 className="text-4xl font-extrabold dark:text-white">
           Ups! Error 404
         </h2>
