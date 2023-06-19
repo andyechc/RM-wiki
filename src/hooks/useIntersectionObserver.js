@@ -9,7 +9,7 @@ export function useIntersectionObserver(ref) {
       entries.forEach((entry) => {
         entry.isIntersecting && 
           setIsIntersecting(true)
-          observer.unobserver(entry.target);
+          observer.disconect();
       });
     });
 
@@ -18,7 +18,7 @@ export function useIntersectionObserver(ref) {
     }
 
     return () => {
-      if (ref.current) observer.unobserver(ref.current);
+      if (ref.current) observer.disconect();
     };
   }, []);
 
