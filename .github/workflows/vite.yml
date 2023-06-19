@@ -33,5 +33,6 @@ jobs:
           artifact_name: github-pages
           debug_mode: false
           package_manager: npm
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
 
