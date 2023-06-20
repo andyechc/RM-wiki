@@ -18,7 +18,7 @@ export function Character() {
   }, []);
 
   return (
-    <section className="w-full h-full min-h-screen flex flex-col gap-14 p-10 dark:bg-gray-900 bg-white transition-colors">
+    <section className="w-full h-full min-h-screen flex flex-col gap-14 px-10 py-20 dark:bg-gray-900 bg-white transition-colors">
       <Suspense>
         <SectionTitle
           title="Characters"
@@ -34,19 +34,23 @@ export function Character() {
         </p>
       )}
 
-      <ul className="h-full w-full min-h-full flex md:flex flex-wrap gap-10">
+      <ul className="h-full w-full min-h-full flex justify-center items-center flex-wrap gap-10">
         {characters &&
           characters.results.map((character) => (
             <li
               key={character.id}
-              className="bg-white dark:bg-gray-800 h-32 w-full xl:w-full md:max-w-xs flex rounded shadow-md overflow-hidden hover:shadow-[7px_7px_25px_rgba(0,250,200,0.25)] cursor-pointer hover:translate-y-1 animate-show transition-all"
+              className="bg-white dark:bg-gray-800 h-32 w-full sm:max-w-sm flex rounded shadow-md overflow-hidden hover:shadow-[7px_7px_25px_rgba(0,250,200,0.25)] cursor-pointer hover:translate-y-1 animate-show transition-all"
             >
-              <div
-                className={`bg-[url(${character.image})] bg-center bg-cover w-32 text-md font-light text-cyan-800 text-center`}
-              ></div>
+              <div>
+                <img
+                  className="min-h-full text-md font-light text-cyan-800 text-center"
+                  src={character.image}
+                  alt={character.name}
+                />
+              </div>
 
-              <div className="p-4 flex-grow">
-                <h4 className="text-2xl dark:text-gray-100 text-gray-900 font-extrabold">
+              <div className="p-4 w-full flex-grow">
+                <h4 className="text-xl sm:text-2xl md:text-xl dark:text-gray-100 text-gray-900 font-extrabold">
                   {character.name}
                 </h4>
                 <p className="text-md text-gray-700 dark:text-gray-300 font-normal">
