@@ -41,13 +41,9 @@ export function Character() {
               key={character.id}
               className="bg-white dark:bg-gray-800 h-32 w-full xl:w-full md:max-w-xs flex rounded shadow-md overflow-hidden hover:shadow-[7px_7px_25px_rgba(0,250,200,0.25)] cursor-pointer hover:translate-y-1 animate-show transition-all"
             >
-              <div className="flex items-center justify-center items-center w-32 text-md font-light text-cyan-800 text-center">
-                <img
-                  className="w-full"
-                  src={character.image}
-                  alt={character.name}
-                />
-              </div>
+              <div
+                className={`bg-[url(${character.image})] bg-center bg-cover w-32 text-md font-light text-cyan-800 text-center`}
+              ></div>
 
               <div className="p-4 flex-grow">
                 <h4 className="text-2xl dark:text-gray-100 text-gray-900 font-extrabold">
