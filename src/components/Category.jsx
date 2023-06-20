@@ -7,20 +7,12 @@ const CategoryListItem = React.lazy(() => import("./CategoryListItem"));
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 export function Category() {
-  const titleRef = useRef(null);
   const itemRef = useRef(null);
-  const [isIntersectingTitle] = useIntersectionObserver(titleRef);
   const [isIntersectingItems] = useIntersectionObserver(itemRef);
 
   return (
-    <section className="w-full h-screen md:h-full flex flex-col gap-15 p-10 dark:bg-gray-800 bg-gray-200 transition-colors">
-      <div ref={titleRef} className="w-full h-40 ">
-        {isIntersectingTitle && (
-          <Suspense>
-            <SectionTitle title="Categories" subTitle="Select a categorie to view more details"/>
-          </Suspense>
-        )}
-      </div>
+    <section className="w-full h-full flex flex-col gap-15 px-10 py-20 dark:bg-gray-800 bg-gray-200 transition-colors">
+      <Suspense><SectionTitle title="Categories" subTitle="Chose a Category to see all details"/></Suspense>
 
       <ul
         ref={itemRef}
