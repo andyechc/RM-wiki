@@ -8,10 +8,14 @@ export function Character() {
   useEffect(() => {
     fetch("https://rickandmortyapi.com/api/character")
       .then((response) => response.json())
-      .then((data) => setCharacters(data))
-      .catch((error) => setErr(error));
-    console.log(data);
-    console.log(error);
+      .then((data) => {
+        console.log(data) 
+        setCharacters(data);
+      })
+      .catch((error) => {
+        console.log(error)
+        setErr(error);
+      });
   }, []);
 
   return (
