@@ -27,11 +27,11 @@ export default function Character({ character }) {
 
 export function CharacterPlaceholder() {
   return (
-    <div className="bg-transparent h-32 w-full sm:max-w-sm p-5 flex overflow-hidden cursor-wait animate-pulse transition-all">
-      <div className="w-full h-full bg-gray-600 dark:bg-gray-400 animate-pulse"></div>
-      <div className="p-4 w-full flex flex-col gap-5 flex-grow animate-pulse">
-        <div className="w-full h-5 bg-gray-600 dark:bg-gray-300 animate-pulse"></div>
-        <div className="w-1/3 h-3 bg-gray-600 dark:bg-gray-00 animate-pulse"></div>
+    <div className="bg-transparent h-32 w-full sm:max-w-sm p-5 flex overflow-hidden cursor-wait rounded animate-pulse transition-all">
+      <div className="w-full h-full bg-gray-600 dark:bg-gray-400 rounded animate-pulse"></div>
+      <div className="p-4 w-full flex flex-col gap-5 flex-grow rounded animate-pulse">
+        <div className="w-full h-5 bg-gray-600 dark:bg-gray-300 rounded animate-pulse"></div>
+        <div className="w-1/3 h-3 bg-gray-600 dark:bg-gray-00 rounded animate-pulse"></div>
       </div>
     </div>
   );

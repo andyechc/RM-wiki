@@ -19,7 +19,14 @@ export function Footer(){
             href="https://iconos8.es/"
           >
             {" "}
-            Icons8
+            Icons8,
+          </a><a
+            className="text-green-600"
+            target="_blank"
+            href="https://pngaaa.com/"
+          >
+            {" "}
+            Pngaaa
           </a>
         </p>
       </footer>  
