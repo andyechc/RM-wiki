@@ -7,8 +7,10 @@ export function useIntersectionObserver(ref) {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        entry.isIntersecting && setIsIntersecting(true);
-        observer.disconnect();
+        if (entry.isIntersecting) {
+          setIsIntersecting(true);
+          observer.unobserve(ref.current);
+        }
       });
     });
 
@@ -18,7 +20,7 @@ export function useIntersectionObserver(ref) {
 
     return () => {
       if (ref.current) {
-        observer.disconnect();
+        observer.unobserve(ref.current);
       }
     };
   }, []);
