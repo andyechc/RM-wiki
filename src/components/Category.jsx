@@ -11,8 +11,13 @@ export function Category() {
   const [isIntersectingItems] = useIntersectionObserver(itemRef);
 
   return (
-    <section className="w-full h-full flex flex-col gap-15 px-10 py-20 dark:bg-gray-800 bg-gray-200 transition-colors">
-      <Suspense><SectionTitle title="Categories" subTitle="Chose a Category to see all details"/></Suspense>
+    <section className="w-full min-h-full h-full flex flex-col gap-20 px-10 py-20 dark:bg-gray-800 bg-gray-200 transition-colors">
+      <Suspense>
+        <SectionTitle
+          title="Categories"
+          subTitle="Chose a Category to see all details"
+        />
+      </Suspense>
 
       <ul
         ref={itemRef}

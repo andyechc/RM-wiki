@@ -3,11 +3,11 @@ import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 export default function SectionTitle({ title, subTitle }) {
   const titleRef = useRef(null);
-  
+
   const [isIntersectingTitle] = useIntersectionObserver(titleRef);
-  
+
   return (
-    <div ref={titleRef} className="w-full h-40 ">
+    <div ref={titleRef} className="w-full h-full ">
       {isIntersectingTitle && (
         <Suspense>
           <h2 className="md:text-5xl text-4xl font-extrabold text-cyan-500 animate-show">
