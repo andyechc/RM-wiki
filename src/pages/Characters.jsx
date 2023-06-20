@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { useGetData } from "../hooks/useGetData";
 import { CharacterPlaceholder } from "../components/Character";
+import { Loading } from "../components/Loading";
 
 const SectionTitle = React.lazy(() => import("../components/SectionTitle"));
 const Character = React.lazy(() => import("../components/Character"));
@@ -17,8 +18,6 @@ export function Characters() {
         />
       </Suspense>
 
-      {isLoading && <h2>Loading...</h2>}
-
       {characters && (
         <p className="text-md font-medium text-gray-700 dark:text-gray-100 animate-show">
           Total: {characters.info.count}
@@ -28,11 +27,13 @@ export function Characters() {
       <ul className="h-full w-full min-h-full flex justify-center items-center flex-wrap gap-10">
         {characters &&
           characters.results.map((character) => (
-            <Suspense fallback={<CharacterPlaceholder/>}>
+            <Suspense fallback={<CharacterPlaceholder />}>
               <Character character={character} />
             </Suspense>
           ))}
       </ul>
+
+      {isLoading && <Loading />}
     </section>
   );
 }
