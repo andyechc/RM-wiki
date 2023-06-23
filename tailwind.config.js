@@ -16,7 +16,7 @@ export default {
       },
       animation: {
         show: "show 1s ease-in-out",
-        rotate: "rotate 2s ease-in-out",
+        rotate: "rotate 2s infinite ease-in-out",
       },
     },
   },
