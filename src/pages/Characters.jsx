@@ -16,7 +16,10 @@ const CharacterListItem = React.lazy(() =>
 export function Characters() {
   const visorRef = useRef();
   const [visorIsIntersecting] = useIntersectionObserver(visorRef, false);
-  const [characters, isLoading, err] = useGetData(visorIsIntersecting, "character");
+  const [characters, isLoading, err] = useGetData(
+    visorIsIntersecting,
+    "character"
+  );
 
   return (
     <section className="w-full h-full min-h-screen flex flex-col gap-14 px-10 py-20 dark:bg-gray-900 bg-white transition-colors">
