@@ -34,7 +34,7 @@ export function Characters() {
         </p>
       )}
 
-      <ul className="h-full w-full min-h-screen flex justify-center flex-wrap  gap-10">
+      <ul className="h-full w-full flex justify-center flex-wrap  gap-10">
         {characters &&
           characters.results.map((character) => (
             <Suspense fallback={<CharacterPlaceholder />}>
