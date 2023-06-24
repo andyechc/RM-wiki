@@ -8,6 +8,8 @@ import { ENDPOINT } from "../services/ENDPOINT";
 
 import DeathIcon from "../icons/DeathIcon";
 import AliveIcon from "../icons/AliveIcon";
+import MaleIcon from "../icons/MaleIcon";
+import FemaleIcon from "../icons/FemaleIcon";
 
 export function CharacterDetails() {
   const { id } = useParams();
@@ -63,7 +65,7 @@ export function CharacterDetails() {
             <h2 className="text-3xl md:text-5xl text-gray-800 dark:text-gray-200 font-extrabold">
               {element.name}
             </h2>
-            <span className="flex gap-5 items-center text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-bold">
+            <span className="flex gap-1 items-center text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-bold">
               Status: {element.status}
               {element.status === "Alive" ? <AliveIcon /> : <DeathIcon />}
             </span>
@@ -73,12 +75,16 @@ export function CharacterDetails() {
             <h4 className="text-xl md:text-2xl text-gray-800 dark:text-gray-300 font-bold">
               Specie: {element.species}
             </h4>
-            <h4 className="text-xl md:text-2xl text-gray-800 dark:text-gray-300 font-bold">
+
+            <h4 className="flex gap-1 items-center text-xl md:text-2xl text-gray-800 dark:text-gray-300 font-bold">
               Gender: {element.gender}
+              {element.gender === "Male" ? <MaleIcon /> : <FemaleIcon />}
             </h4>
+
             <h4 className="text-xl md:text-2xl text-gray-800 dark:text-gray-300 font-bold">
               Origin: {element.origin.name}
             </h4>
+
             <h4 className="text-xl md:text-2xl text-gray-800 dark:text-gray-300 font-bold">
               Location: {element.location.name}
             </h4>
