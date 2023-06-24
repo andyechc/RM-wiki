@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "intersection-observer";
 
-export function useIntersectionObserver(ref, one=true) {
+export function useIntersectionObserver(ref, once = true) {
   const [isIntersecting, setIsIntersecting] = useState(false);
 
   useEffect(() => {
@@ -9,7 +9,9 @@ export function useIntersectionObserver(ref, one=true) {
       elements.forEach((el) => {
         if (el.isIntersecting) {
           setIsIntersecting(true);
-          one && observer.unobserve(ref.current);
+          once && observer.unobserve(ref.current);
+        } else {
+          !once && setIsIntersecting(false);
         }
       });
     });
@@ -19,7 +21,7 @@ export function useIntersectionObserver(ref, one=true) {
     }
 
     return () => {
-      if (ref.current && one) {
+      if (ref.current) {
         observer.unobserve(ref.current);
       }
     };

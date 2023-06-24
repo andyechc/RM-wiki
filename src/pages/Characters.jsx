@@ -1,28 +1,35 @@
-import React, { Suspense, useRef, useEffect } from "react";
-import { useGetData } from "../hooks/useGetData";
-import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import React, { Suspense, useRef, useState } from "react";
+import ScrollTopOnRoute from "../components/ScrollTopOnRoute";
+import { useCharacters } from "../hooks/useCharacters";
 import { CharacterPlaceholder } from "../components/CharacterListItem";
-import { Loading } from "../components/Loading";
+import { Link } from "react-router-dom";
+// import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+// import { debounce } from "just-debounce-it";
 
 const SectionTitle = React.lazy(() => import("../components/SectionTitle"));
+const ErrorMessage = React.lazy(() => import("../components/ErrorMessage"));
 const CharacterListItem = React.lazy(() =>
   import("../components/CharacterListItem")
 );
 
 export function Characters() {
-  const visorRef = useRef();
-  const [characters, isLoading, err] = useGetData("character");
-  // const nextPageCharacter =  characters ? characters.info.nextPage : null;
+  // const visorRef = useRef();
+  const [page, setPage] = useState(1);
+  const { characters, isLoading, err } = useCharacters(page);
 
-  // const handleNextPage = () => return;
-  const [visorIsIntersecting] = useIntersectionObserver(visorRef);
+  const handleNextPage = () => {
+    if (characters) {
+      const limitPage = characters.info.page;
+      if (page === limitPage) return;
+      setPage(page + 1);
+    }
+  };
 
-  // useEffect(() => {
-  //   handleNextPage();
-  // });
+  // const [visorIsIntersecting] = useIntersectionObserver(visorRef, false);
 
   return (
     <section className="w-full h-full min-h-screen flex flex-col gap-14 px-10 py-20 dark:bg-gray-900 bg-white transition-colors">
+      <ScrollTopOnRoute />
       <Suspense>
         <SectionTitle
           title="Characters"
@@ -30,30 +37,34 @@ export function Characters() {
         />
       </Suspense>
 
-      {err && (
-        <p className="text-md font-bold text-red-600 dark:text-red-300">
-          {err}
-        </p>
-      )}
-
       {characters && (
         <p className="text-md font-medium text-gray-700 dark:text-gray-100 animate-show">
           Total: {characters.info.count}
-          {JSON.stringify(characters)}
         </p>
       )}
 
-      <ul className="h-full w-full min-h-full flex justify-center items-center flex-wrap gap-10">
+      <ul className="h-full w-full min-h-screen flex justify-center items-center flex-wrap  gap-10">
         {characters &&
           characters.results.map((character) => (
             <Suspense fallback={<CharacterPlaceholder />}>
-              <CharacterListItem character={character} />
+              <Link to={`/character/${character.id}`}>
+                <CharacterListItem character={character} />
+              </Link>
             </Suspense>
           ))}
-        <div ref={visorRef}></div>
+          {isLoading && <CharacterPlaceholder />}
       </ul>
 
-      {isLoading && <Loading />}
+      
+
+      {err && <ErrorMessage err={err} />}
+
+      <div
+        className="cursor-pointer bg-blue-400 rounded px-10 active:bg-blue-300 transition-colors"
+        onClick={handleNextPage}
+      >
+        next page
+      </div>
     </section>
   );
 }
