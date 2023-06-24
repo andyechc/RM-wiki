@@ -1,10 +1,11 @@
 import React, { Suspense, useRef, useState } from "react";
-import ScrollTopOnRoute from "../components/ScrollTopOnRoute";
-import { useCharacters } from "../hooks/useCharacters";
-import { CharacterPlaceholder } from "../components/CharacterListItem";
 import { Link } from "react-router-dom";
-// import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
-// import { debounce } from "just-debounce-it";
+
+import ScrollTopOnRoute from "../components/ScrollTopOnRoute";
+import { CharacterPlaceholder } from "../components/CharacterListItem";
+
+import { useGetData } from "../hooks/useGetData";
+import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 const SectionTitle = React.lazy(() => import("../components/SectionTitle"));
 const ErrorMessage = React.lazy(() => import("../components/ErrorMessage"));
@@ -13,20 +14,9 @@ const CharacterListItem = React.lazy(() =>
 );
 
 export function Characters() {
-  // const visorRef = useRef();
-  const [page, setPage] = useState(1);
-  const { characters, isLoading, err } = useCharacters(page);
-
-  const handleNextPage = () => {
-    if (err) setPage(page - 1);
-    if (characters) {
-      const limitPage = characters.info.page;
-      if (page === limitPage) return;
-      setPage(page + 1);
-    }
-  };
-
-  // const [visorIsIntersecting] = useIntersectionObserver(visorRef, false);
+  const visorRef = useRef();
+  const [visorIsIntersecting] = useIntersectionObserver(visorRef, false);
+  const [characters, isLoading, err] = useGetData(visorIsIntersecting, "character");
 
   return (
     <section className="w-full h-full min-h-screen flex flex-col gap-14 px-10 py-20 dark:bg-gray-900 bg-white transition-colors">
@@ -58,12 +48,7 @@ export function Characters() {
 
       {err && <ErrorMessage err={err} />}
 
-      <button
-        className="w-44 cursor-pointer bg-blue-400 font-bold text-md rounded px-10 active:bg-blue-300 transition-colors"
-        onClick={handleNextPage}
-      >
-        next page
-      </button>
+      <div ref={visorRef}></div>
     </section>
   );
 }
