@@ -67,7 +67,11 @@ export function CharacterDetails() {
             </h2>
             <span className="flex gap-1 items-center text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-bold">
               Status: {element.status}
-              {element.status === "Alive" ? <AliveIcon /> : <DeathIcon />}
+              {element.status === "Alive" && <AliveIcon />}
+              {element.status === "Dead" && <DeathIconIcon />}
+              {element.status === "unknown" && (
+                <p className="text-2xl font-extrabold text-green-500">?</p>
+              )}
             </span>
           </div>
 
@@ -78,7 +82,11 @@ export function CharacterDetails() {
 
             <h4 className="flex gap-1 items-center text-xl md:text-2xl text-gray-800 dark:text-gray-300 font-bold">
               Gender: {element.gender}
-              {element.gender === "Male" ? <MaleIcon /> : <FemaleIcon />}
+              {element.gender === "Male" && <MaleIcon />}
+              {element.gender === "Female" && <FemaleIcon />}
+              {element.gender === "unknown" && (
+                <p className="text-2xl font-extrabold text-green-500">?</p>
+              )}
             </h4>
 
             <h4 className="text-xl md:text-2xl text-gray-800 dark:text-gray-300 font-bold">
