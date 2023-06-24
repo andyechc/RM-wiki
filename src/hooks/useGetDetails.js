@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { ENDPOINT } from "../services/ENDPOINT";
 
-export function useGetDetails({item, id}) {
+export function useGetDetails( item, id ) {
   const [element, setElement] = useState(null);
   const [err, setErr] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
