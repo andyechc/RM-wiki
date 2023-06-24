@@ -18,6 +18,7 @@ export function Characters() {
   const { characters, isLoading, err } = useCharacters(page);
 
   const handleNextPage = () => {
+    if (err) setPage(page - 1);
     if (characters) {
       const limitPage = characters.info.page;
       if (page === limitPage) return;
@@ -43,7 +44,7 @@ export function Characters() {
         </p>
       )}
 
-      <ul className="h-full w-full min-h-screen flex justify-center items-center flex-wrap  gap-10">
+      <ul className="h-full w-full min-h-screen flex justify-center flex-wrap  gap-10">
         {characters &&
           characters.results.map((character) => (
             <Suspense fallback={<CharacterPlaceholder />}>
@@ -52,15 +53,13 @@ export function Characters() {
               </Link>
             </Suspense>
           ))}
-          {isLoading && <CharacterPlaceholder />}
+        {isLoading && <CharacterPlaceholder />}
       </ul>
-
-      
 
       {err && <ErrorMessage err={err} />}
 
       <div
-        className="cursor-pointer bg-blue-400 rounded px-10 active:bg-blue-300 transition-colors"
+        className="cursor-pointer bg-blue-400 font-bold text-md rounded px-10 active:bg-blue-300 transition-colors"
         onClick={handleNextPage}
       >
         next page
