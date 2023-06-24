@@ -1,6 +1,5 @@
-import page404Png from "../assets/404.png";
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ScrollTopOnRoute from "../components/ScrollTopOnRoute";
 import { ENDPOINT } from "../services/ENDPOINT";
 
@@ -33,10 +32,16 @@ export function CharacterDetails() {
   }, []);
 
   return (
-    <section className="bg-white dark:bg-gray-900 h-full transition-colors">
+    <section className="bg-white dark:bg-gray-900 h-full transition-colors py-20 px-10">
       <ScrollTopOnRoute />
-      <div>
-        <img src={element.image} />
+      <div className="w-full h-full flex flex-col justify-center items-center gap-3">
+        <h2 className="text-4xl font-extrabold dark:text-white">
+          Character name: {JSON.stringify(element)}
+        </h2>
+        <p className="text-xl font-light dark:text-gray-200">
+          This pages does'nt exist. Check in other Time, I working on this
+          moment.
+        </p>
       </div>
     </section>
   );
