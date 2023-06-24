@@ -58,12 +58,12 @@ export function Characters() {
 
       {err && <ErrorMessage err={err} />}
 
-      <div
-        className="cursor-pointer bg-blue-400 font-bold text-md rounded px-10 active:bg-blue-300 transition-colors"
+      <button
+        className="w-44 cursor-pointer bg-blue-400 font-bold text-md rounded px-10 active:bg-blue-300 transition-colors"
         onClick={handleNextPage}
       >
         next page
-      </div>
+      </button>
     </section>
   );
 }

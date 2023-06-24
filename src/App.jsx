@@ -2,6 +2,7 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Home } from "./pages/Home";
 import { Characters } from "./pages/Characters";
+import { CharacterDetails } from "./pages/CharacterDetails";
 import { Page404 } from "./pages/Page404";
 import { HashRouter, Routes, Route } from "react-router-dom";
 
@@ -22,6 +23,13 @@ function App() {
             Component={Characters}
             lazy={() => import("./pages/Characters")}
           />
+          
+          <Route
+            path="/character/:id"
+            Component={CharacterDetails}
+            lazy={() => import("./pages/CharacterDetails")}
+          />
+          
           <Route
             path="/*"
             Component={Page404}
