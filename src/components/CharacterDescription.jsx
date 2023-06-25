@@ -3,7 +3,7 @@ import AliveIcon from "../icons/AliveIcon";
 import MaleIcon from "../icons/MaleIcon";
 import FemaleIcon from "../icons/FemaleIcon";
 
-export function CharacterDescription({ character }) {
+export default function CharacterDescription({ character }) {
   return (
     <article className=" w-full flex flex-col gap-20">
       <div className="w-full h-40 md:h-44 xl:h-52 flex justify-center items-center animate-show">
@@ -42,11 +42,11 @@ export function CharacterDescription({ character }) {
         </h4>
 
         <h4 className="text-xl md:text-2xl text-gray-800 dark:text-gray-300 font-bold">
-          Origin: {element.origin.name}
+          Origin: {character.origin.name}
         </h4>
 
         <h4 className="text-xl md:text-2xl text-gray-800 dark:text-gray-300 font-bold">
-          Location: {element.location.name}
+          Location: {character.location.name}
         </h4>
       </div>
     </article>

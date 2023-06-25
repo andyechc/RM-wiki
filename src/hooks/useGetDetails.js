@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { ENDPOINT } from "../services/ENDPOINT";
 
-export function useGetDetails( item, id ) {
+export function useGetDetails(item, id) {
   const [element, setElement] = useState(null);
   const [err, setErr] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
 
   useEffect(() => {
-    async function getDetails({ ENDPOINT, item, id }) {
+    async function getDetails(ENDPOINT, item, id) {
       try {
         setIsLoading(true);
         const res = await fetch(ENDPOINT + item + id);
@@ -25,7 +25,7 @@ export function useGetDetails( item, id ) {
     }
 
     setErr(false);
-    getDetails({ ENDPOINT, item, id });
+    getDetails(ENDPOINT, item, id);
   }, []);
 
   return [element, isLoading, err];
