@@ -1,7 +1,7 @@
 export default function MaleIcon() {
   return (
     <svg
-    className='text-cyan-500'
+    className='text-cyan-500 inline'
       stroke="currentColor"
       fill="currentColor"
       stroke-width="0"

@@ -11,7 +11,7 @@ export function Category() {
   const [isIntersectingItems] = useIntersectionObserver(itemRef);
 
   return (
-    <section className="w-full min-h-full h-full flex flex-col gap-20 px-10 py-20 dark:bg-gray-800 bg-gray-200 transition-colors">
+    <section className="w-full min-h-full h-full flex flex-col gap-20 px-10 py-20 dark:bg-gray-800 bg-gray-100 transition-colors">
       <Suspense>
         <SectionTitle
           title="Categories"
@@ -31,18 +31,13 @@ export function Category() {
                 title="Characters"
               />
             </Link>
-            
+
             <Link to="/locations">
-            <CategoryListItem
-              icon="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREeNZ-c2Ub2HtUn2lqY7p1tPXj1-KUYPJjIg&usqp=CAU"
-              title="Locations"
-            />
+              <CategoryListItem
+                icon="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREeNZ-c2Ub2HtUn2lqY7p1tPXj1-KUYPJjIg&usqp=CAU"
+                title="Locations"
+              />
             </Link>
-            
-            <CategoryListItem
-              icon="https://i.pinimg.com/736x/07/3e/42/073e42625795a2bdafd4031a5479395b.jpg"
-              title="Films"
-            />
           </Suspense>
         )}
       </ul>

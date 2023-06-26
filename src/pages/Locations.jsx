@@ -16,7 +16,7 @@ const LocationListItem = React.lazy(() =>
 export function Locations() {
   const visorRef = useRef();
   const [visorIsIntersecting] = useIntersectionObserver(visorRef, false);
-  const [locations, isLoading, err] = useGetData(
+  const [locations, isLoading, err, page] = useGetData(
     visorIsIntersecting,
     "location"
   );
@@ -32,20 +32,22 @@ export function Locations() {
       </Suspense>
 
       {locations && (
-        <p className="text-md font-medium text-gray-700 dark:text-gray-100 animate-show">
+        <p className="text-xl font-medium text-gray-700 dark:text-gray-100 animate-show">
           Total: {locations.info.count}
         </p>
       )}
 
-      <ul className="h-full py-10 w-full flex md:justify-center md:flex-wrap overflow-x-scroll overflow-y-hidden snap-x scroll-smooth gap-10">
+      <ul className="h-full py-10 w-full flex items-center md:justify-center md:flex-wrap overflow-x-scroll overflow-y-hidden snap-x scroll-smooth gap-5 md:gap-10">
         {locations &&
           locations.results.map((location) => (
-            <Suspense fallback={LocationPlaceholder}>
+            <Suspense fallback={<LocationPlaceholder />}>
               <LocationListItem location={location} />
             </Suspense>
           ))}
         {isLoading && <LocationPlaceholder />}
-        <div ref={visorRef}>.</div>
+        <div className="snap-end snap-always" ref={visorRef}>
+          .
+        </div>
       </ul>
 
       {err && <ErrorMessage err={err} />}

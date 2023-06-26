@@ -2,8 +2,8 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { Home } from "./pages/Home";
 import { Characters } from "./pages/Characters";
-import { Locations } from "./pages/Locations";
 import { CharacterDetails } from "./pages/CharacterDetails";
+import { Locations } from "./pages/Locations";
 import { Page404 } from "./pages/Page404";
 import { HashRouter, Routes, Route } from "react-router-dom";
 

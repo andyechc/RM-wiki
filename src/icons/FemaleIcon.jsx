@@ -1,7 +1,7 @@
 export default function FemaleIcon() {
   return (
     <svg
-    className='text-red-500'
+    className='text-red-500 inline'
       stroke="currentColor"
       fill="currentColor"
       stroke-width="0"

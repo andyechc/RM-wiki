@@ -32,7 +32,7 @@ export function Characters() {
       </Suspense>
 
       {characters && (
-        <p className="text-md font-medium text-gray-700 dark:text-gray-100 animate-show">
+        <p className="text-xl font-medium text-gray-700 dark:text-gray-100 animate-show">
           Total: {characters.info.count}
         </p>
       )}
