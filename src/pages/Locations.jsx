@@ -1,24 +1,24 @@
 import React, { Suspense, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-import ErrorMessage from "../components/ErrorMessage";
 import ScrollTopOnRoute from "../components/ScrollTopOnRoute";
-import { CharacterPlaceholder } from "../components/CharacterListItem";
+import ErrorMessage from "../components/ErrorMessage";
+import { LocationPlaceholder } from "../components/LocationListItem";
 
 import { useGetData } from "../hooks/useGetData";
 import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 
 const SectionTitle = React.lazy(() => import("../components/SectionTitle"));
-const CharacterListItem = React.lazy(() =>
-  import("../components/CharacterListItem")
+const LocationListItem = React.lazy(() =>
+  import("../components/LocationListItem")
 );
 
-export function Characters() {
+export function Locations() {
   const visorRef = useRef();
   const [visorIsIntersecting] = useIntersectionObserver(visorRef, false);
-  const [characters, isLoading, err] = useGetData(
+  const [locations, isLoading, err] = useGetData(
     visorIsIntersecting,
-    "character"
+    "location"
   );
 
   return (
@@ -26,32 +26,29 @@ export function Characters() {
       <ScrollTopOnRoute />
       <Suspense>
         <SectionTitle
-          title="Characters"
-          subTitle="Chose a character to see more details."
+          title="Locations"
+          subTitle="All Locations of the animated serie"
         />
       </Suspense>
 
-      {characters && (
+      {locations && (
         <p className="text-md font-medium text-gray-700 dark:text-gray-100 animate-show">
-          Total: {characters.info.count}
+          Total: {locations.info.count}
         </p>
       )}
 
-      <ul className="h-full w-full flex justify-center flex-wrap  gap-10">
-        {characters &&
-          characters.results.map((character) => (
-            <Suspense fallback={<CharacterPlaceholder />}>
-              <Link to={`/characters/${character.id}`}>
-                <CharacterListItem character={character} />
-              </Link>
+      <ul className="h-full py-10 w-full flex md:justify-center md:flex-wrap overflow-x-scroll overflow-y-hidden snap-x scroll-smooth gap-10">
+        {locations &&
+          locations.results.map((location) => (
+            <Suspense fallback={LocationPlaceholder}>
+              <LocationListItem location={location} />
             </Suspense>
           ))}
-        {isLoading && <CharacterPlaceholder />}
+        {isLoading && <LocationPlaceholder />}
+        <div ref={visorRef}>.</div>
       </ul>
 
       {err && <ErrorMessage err={err} />}
-
-      <div ref={visorRef}></div>
     </section>
   );
 }

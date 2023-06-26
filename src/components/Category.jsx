@@ -25,16 +25,20 @@ export function Category() {
       >
         {isIntersectingItems && (
           <Suspense>
-            <Link to="/character">
+            <Link to="/characters">
               <CategoryListItem
                 icon="https://wallpaperaccess.com/full/4127807.jpg"
                 title="Characters"
               />
             </Link>
+            
+            <Link to="/locations">
             <CategoryListItem
               icon="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREeNZ-c2Ub2HtUn2lqY7p1tPXj1-KUYPJjIg&usqp=CAU"
               title="Locations"
             />
+            </Link>
+            
             <CategoryListItem
               icon="https://i.pinimg.com/736x/07/3e/42/073e42625795a2bdafd4031a5479395b.jpg"
               title="Films"

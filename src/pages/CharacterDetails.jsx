@@ -13,7 +13,7 @@ const CharacterDescription = React.lazy(() =>
 
 export function CharacterDetails() {
   const { id } = useParams();
-  const [character, isLoading, err] = useGetDetails( "character/", id );
+  const [character, isLoading, err] = useGetDetails("character/", id);
 
   return (
     <section className="bg-white min-h-max dark:bg-gray-900 h-full flex justify-center items-center transition-colors py-20 px-10">
@@ -28,9 +28,9 @@ export function CharacterDetails() {
       {isLoading && <CharacterDescriptionPlaceholder />}
 
       {character && (
-        <Suspense fallback={<CharacterDescriptionPlaceholder />}>
-          <CharacterDescription character={character} />
-        </Suspense>
+          <Suspense fallback={<CharacterDescriptionPlaceholder />}>
+            <CharacterDescription character={character} />
+          </Suspense>
       )}
     </section>
   );
