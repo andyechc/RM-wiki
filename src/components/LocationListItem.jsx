@@ -26,7 +26,7 @@ export default function LocationListItem({ location }) {
 
 export function LocationPlaceholder() {
   return (
-    <div className="bg-gray-600 h-[300px] md:h-32 min-w-[250px] w-full sm:max-w-sm p-5 flex flex-col justify-center gap-5 overflow-hidden cursor-wait snap-always snap-start rounded-2xl md:rounded animate-pulse transition-all">
+    <div className="bg-gray-600 h-[300px] md:h-32 min-w-[250px] w-full sm:max-w-sm p-5 flex flex-col justify-center gap-5 overflow-hidden cursor-wait snap-always rounded-2xl md:rounded animate-pulse transition-all">
       <div className="w-1/3 h-5 bg-gray-300 rounded animate-pulse"></div>
       <div className="w-full h-5 bg-gray-300 rounded animate-pulse"></div>
       <div className="w-1/2 h-3 bg-gray-300 rounded animate-pulse"></div>

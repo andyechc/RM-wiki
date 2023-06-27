@@ -28,7 +28,7 @@ export function Footer() {
           </svg>
         </a>
 
-        <a className="" target="_blank" href="https://t/">
+        <a target="_blank" href="https://twitter.com/andev_code?s=08">
           <svg
             className="text-3xl text-gray-600 dark:text-gray-400 hover:opacity-70 transition-all"
             stroke="currentColor"
@@ -43,7 +43,7 @@ export function Footer() {
           </svg>
         </a>
 
-        <a className="" target="_blank" href="https://">
+        <a target="_blank" href="https:/instagram.com/andev_code">
           <svg
             className="text-3xl text-gray-600 dark:text-gray-400 hover:opacity-70 transition-all"
             stroke="currentColor"
@@ -84,7 +84,7 @@ export function Footer() {
           <a
             className="text-cyan-600"
             target="_blank"
-            href="https://rickandmortyapi/"
+            href="https://rickandmortyapi.com"
           >
             {" "}
             The Rick & Morty API
